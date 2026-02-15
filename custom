@@ -1,0 +1,58 @@
+default partial alphanumeric_keys
+xkb_symbols "custom" {
+
+    include "pc"
+    include "level3(ralt_switch)"
+
+    // --- Control keys ---
+    key <ESC>  { [ Escape ] };
+    key <LSGT> { [ Escape ] };              // keycode 94
+    key <BKSP> { [ Caps_Lock, Delete ] };   // keycode 66
+    key <TAB>  { [ Tab, ISO_Left_Tab ] };
+    key <AD12> { [ P] }; //Super_L ] };
+    key <RTRN> { [ Return ] };
+    key <BKSL> { [ Return ] };              // keycode 51
+    key <LCTL> { [ Control_L ] };
+    key <LFSH> { [ Shift_L ] };
+    key <CAPS> { [ BackSpace ] };
+
+    // --- Top row ---
+    key <AD01> { [ apostrophe, question, slash, questiondown ] };
+    key <AD02> { [ comma, semicolon, 1, exclamdown ] };
+    key <AD03> { [ period, colon, 2, exclam ] };
+    key <AD04> { [ p, P, 3, periodcentered ] };
+    key <AD05> { [ y, Y, plus, dollar ] };
+    key <AD06> { [ f, F, at, at ] };
+    key <AD07> { [ g, G, braceleft, braceleft ] };
+    key <AD08> { [ c, C, braceright, braceright ] };
+    key <AD09> { [ r, R, parenleft, parenleft ] };
+    key <AD10> { [ l, L, parenright, parenright ] };
+    key <AD11> { [ dead_grave, dead_circumflex ] };
+    key <AD12> { [ dead_acute, dead_diaeresis, dead_tilde, dead_tilde ] };
+
+    // --- Home row ---
+    key <AC01> { [ a, A, equal, percent ] };
+    key <AC02> { [ o, O, 4, ampersand ] };
+    key <AC03> { [ e, E, 5, backslash ] };
+    key <AC04> { [ u, U, 6, bar ] };
+    key <AC05> { [ i, I, minus, underscore ] };
+    key <AC06> { [ d, D, numbersign, numbersign ] };
+    key <AC07> { [ h, H, bracketleft, bracketleft ] };
+    key <AC08> { [ t, T, bracketright, bracketright ] };
+    key <AC09> { [ n, N, less, less ] };
+    key <AC10> { [ s, S, greater, greater ] };
+    key <AC11> { [ dead_acute, dead_diaeresis, dead_tilde, dead_tilde ] };
+
+    // --- Bottom row ---
+    key <AB01> { [ ntilde, Ntilde, 7, EuroSign ] };
+    key <AB02> { [ q, Q, 8, 8 ] };
+    key <AB03> { [ j, J, 9, 9 ] };
+    key <AB04> { [ k, K, 0, 0 ] };
+    key <AB05> { [ x, X, asterisk, asterisk ] };
+    key <AB06> { [ b, B, quotedbl, quotedbl ] };
+    key <AB07> { [ m, M ] };
+    key <AB08> { [ w, W ] };
+    key <AB09> { [ v, V ] };
+    key <AB10> { [ z, Z ] };
+};
+
