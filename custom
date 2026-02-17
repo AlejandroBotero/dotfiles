@@ -2,19 +2,23 @@ default partial alphanumeric_keys
 xkb_symbols "custom" {
 
     include "pc"
+    include "us(dvorak)"
     include "level3(ralt_switch)"
 
     // --- Control keys ---
+
     key <ESC>  { [ Escape ] };
     key <LSGT> { [ Escape ] };              // keycode 94
     key <BKSP> { [ Caps_Lock, Delete ] };   // keycode 66
     key <TAB>  { [ Tab, ISO_Left_Tab ] };
-    key <AD12> { [ P] }; //Super_L ] };
-    key <RTRN> { [ Return ] };
-    key <BKSL> { [ Return ] };              // keycode 51
+
+    key <AD12> { [ Super_R] };
+	modifier_map Mod4 { <AD12> };
+
+    key <RTRN> { [ Return ] }; key <BKSL> { [ Return ] };              // keycode 51
     key <LCTL> { [ Control_L ] };
     key <LFSH> { [ Shift_L ] };
-    key <CAPS> { [ BackSpace ] };
+    key <CAPS> { [ BackSpace, Delete] };
 
     // --- Top row ---
     key <AD01> { [ apostrophe, question, slash, questiondown ] };
@@ -28,7 +32,6 @@ xkb_symbols "custom" {
     key <AD09> { [ r, R, parenleft, parenleft ] };
     key <AD10> { [ l, L, parenright, parenright ] };
     key <AD11> { [ dead_grave, dead_circumflex ] };
-    key <AD12> { [ dead_acute, dead_diaeresis, dead_tilde, dead_tilde ] };
 
     // --- Home row ---
     key <AC01> { [ a, A, equal, percent ] };

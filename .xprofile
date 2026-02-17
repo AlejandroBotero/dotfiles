@@ -1,0 +1,3 @@
+setxkbmap custom
+feh ~/Downloads/wp.jpg --bg-scale
+

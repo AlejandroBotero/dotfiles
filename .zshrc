@@ -103,7 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim="nvim"
 alias vi="nvim"
 bindkey '^I^I' autosuggest-accept
 #zstyle ':completion:*' matcher-list \ 'm:{a-zA-Z}={A-Za-z}' \ 'r:|[._-]=* r:|=*' \ 'l:|=* r:|=*'
