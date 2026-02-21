@@ -8,3 +8,5 @@ sudo ln -sf ~/dotfiles/i3.config ~/.config/i3/config
 sudo ln -sf ~/dotfiles/kitty.config ~/.config/kitty/kitty.config
 mkdir -p ~/.config/picom
 sudo ln -sf ~/dotfiles/picom.conf ~/.config/picom.conf
+sudo ln -sf ~/dotfiles/nvim ~/.config/nvim
+sudo ln -sf ~/dotfiles/keyd5layer.conf /etc/keyd/keyd.conf

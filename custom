@@ -6,19 +6,17 @@ xkb_symbols "custom" {
     include "level3(ralt_switch)"
 
     // --- Control keys ---
+    //key <CAPS> { [ BackSpace, Delete] };
+    //key <BKSP> { [ Caps_Lock, Delete ] };   // keycode 66
 
-    key <ESC>  { [ Escape ] };
     key <LSGT> { [ Escape ] };              // keycode 94
-    key <BKSP> { [ Caps_Lock, Delete ] };   // keycode 66
-    key <TAB>  { [ Tab, ISO_Left_Tab ] };
 
     key <AD12> { [ Super_R] };
 	modifier_map Mod4 { <AD12> };
 
-    key <RTRN> { [ Return ] }; key <BKSL> { [ Return ] };              // keycode 51
+    key <BKSL> { [ Return ] };
     key <LCTL> { [ Control_L ] };
     key <LFSH> { [ Shift_L ] };
-    key <CAPS> { [ BackSpace, Delete] };
 
     // --- Top row ---
     key <AD01> { [ apostrophe, question, slash, questiondown ] };
