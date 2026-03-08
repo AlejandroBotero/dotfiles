@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo pacman -S --noconfirm zsh firefox kitty feh thunar tmux which nvim dunst picom brightnessctl
+sudo pacman -S --noconfirm zsh firefox kitty feh thunar tmux which nvim dunst picom brightnessctl keyd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra luarocks lua51 luajit imagemagick
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -18,7 +18,7 @@ git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git \
 sudo pacman -S --noconfirm pipewire-pulse pavucontrol zoom
 
 sudo pacman -S --needed base-devel git
-if ! command -v yay > /dev/null; then
+if ! command -v yay >/dev/null; then
   git clone https://aur.archlinux.org/yay.git
   cd yay
   makepkg -si --noconfirm
