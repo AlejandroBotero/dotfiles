@@ -1,0 +1,44 @@
+[global]
+    # Sensible defaults for Dunst
+    font = Monospace 12
+    allow_markup = yes
+    format = "<b>%s</b>
+%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = center
+    show_age_threshold = 60
+    word_wrap = yes
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    geometry = "400x5-30+50"
+    transparency = 0
+    idle_threshold = 120
+    monitor = 0
+    follow = mouse
+    sticky_history = yes
+    history_length = 20
+    show_hints = yes
+    padding = 8
+    horizontal_padding = 8
+    separator_color = frame
+    frame_width = 3
+    frame_color = "#444444"
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+
+[urgency_normal]
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 20
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    frame_color = "#ff0000"
+    timeout = 0

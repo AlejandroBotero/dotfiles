@@ -11,5 +11,7 @@ mkdir -p ~/.config/picom
 sudo ln -sf ~/dotfiles/picom.conf ~/.config/picom.conf
 mkdir -p ~/.config/polybar
 sudo ln -sf ~/dotfiles/polybar.conf ~/.config/polybar/config
+mkdir -p ~/.config/dunst
+sudo ln -sf ~/dotfiles/dunstrc ~/.config/dunst/dunstrc
 sudo ln -sf ~/dotfiles/nvim ~/.config/nvim
 sudo ln -sf ~/dotfiles/keyd5layer.conf /etc/keyd/keyd.conf
