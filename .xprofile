@@ -1,5 +1,5 @@
-setxkbmap custom
 feh ~/wallpapers/wp5.jpg --bg-scale
-setxkbmap -layout custom,custom_ru -option grp:win_space_toggle
+# setxkbmap -layout custom,custom_ru -option grp:win_space_toggle
+setxkbmap es
 xinput set-prop 11 "libinput Accel Speed" 0.5
 #xinput set-prop 11 "libinput Tapping Enabled" 1

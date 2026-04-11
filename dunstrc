@@ -42,3 +42,15 @@
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0
+
+[zoom]
+    # Make Zoom notifications compact and non-intrusive
+    appname = "Zoom"
+    geometry = "300x1-30+50"
+    format = "<b>%s</b>\n%b"
+    timeout = 10
+    frame_color = "#2D5C8A"
+    padding = 4
+    horizontal_padding = 8
+    background = "#285577"
+    foreground = "#ffffff"

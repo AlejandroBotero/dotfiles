@@ -15,3 +15,4 @@ mkdir -p ~/.config/dunst
 sudo ln -sf ~/dotfiles/dunstrc ~/.config/dunst/dunstrc
 sudo ln -sf ~/dotfiles/nvim ~/.config/nvim
 sudo ln -sf ~/dotfiles/keyd5layer.conf /etc/keyd/keyd.conf
+sudo ln -sf ~/dotfiles/vskeybindigs.json /home/alejo/.config/Code/User/keybidings.json

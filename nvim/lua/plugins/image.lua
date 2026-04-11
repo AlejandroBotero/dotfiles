@@ -5,6 +5,9 @@ return {
       "vhyrro/luarocks.nvim",
       priority = 1000,
       config = true,
+      opts = {
+        rocks = { "magick" },
+      },
     },
   },
   config = function()
@@ -17,6 +20,13 @@ return {
           download_remote_images = true,
           only_render_image_at_cursor = false,
           floating_windows = false, -- if true, it will render in floating windows
+        },
+        quarto = {
+          enabled = true,
+          clear_in_insert_mode = false,
+          download_remote_images = true,
+          only_render_image_at_cursor = false,
+          floating_windows = false,
         },
         neorg = {
           enabled = true,

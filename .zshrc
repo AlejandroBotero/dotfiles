@@ -89,3 +89,5 @@ alias vi="nvim"
 bindkey '^I^I' autosuggest-accept
 #zstyle ':completion:*' matcher-list \ 'm:{a-zA-Z}={A-Za-z}' \ 'r:|[._-]=* r:|=*' \ 'l:|=* r:|=*'
 RPROMPT='%D{%L:%M:%S %p}'
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
