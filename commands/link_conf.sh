@@ -1,18 +1,42 @@
 #!/bin/sh
 
-sudo ln -sf ~/dotfiles/.zshrc ~/.zshrc
-sudo ln -sf ~/dotfiles/.xprofile ~/.xprofile
-sudo ln -sf ~/dotfiles/custom /usr/share/X11/xkb/symbols/custom
-sudo ln -sf ~/dotfiles/custom_ru /usr/share/X11/xkb/symbols/custom_ru
-sudo ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-sudo ln -sf ~/dotfiles/i3.config ~/.config/i3/config
-sudo ln -sf ~/dotfiles/kitty.conf ~/.config/kitty/kitty.conf
-mkdir -p ~/.config/picom
-sudo ln -sf ~/dotfiles/picom.conf ~/.config/picom.conf
-mkdir -p ~/.config/polybar
-sudo ln -sf ~/dotfiles/polybar.conf ~/.config/polybar/config
-mkdir -p ~/.config/dunst
-sudo ln -sf ~/dotfiles/dunstrc ~/.config/dunst/dunstrc
-sudo ln -sf ~/dotfiles/nvim ~/.config/nvim
-sudo ln -sf ~/dotfiles/keyd5layer.conf /etc/keyd/keyd.conf
-sudo ln -sf ~/dotfiles/vskeybindigs.json /home/alejo/.config/Code/User/keybidings.json
+DOTFILES="$HOME/dotfiles"
+
+# --- user-space configs (no sudo needed, home dir is user-owned) ---
+ln -sf "$DOTFILES/.zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES/.bashrc" "$HOME/.bashrc"
+ln -sf "$DOTFILES/.xprofile" "$HOME/.xprofile"
+ln -sf "$DOTFILES/.xinitrc" "$HOME/.xinitrc"
+ln -sf "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
+
+mkdir -p "$HOME/.config/i3"
+ln -sf "$DOTFILES/i3.config" "$HOME/.config/i3/config"
+
+mkdir -p "$HOME/.config/kitty"
+ln -sf "$DOTFILES/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+
+mkdir -p "$HOME/.config/picom"
+ln -sf "$DOTFILES/picom.conf" "$HOME/.config/picom.conf"
+
+mkdir -p "$HOME/.config/polybar"
+ln -sf "$DOTFILES/polybar.conf" "$HOME/.config/polybar/config"
+
+mkdir -p "$HOME/.config/dunst"
+ln -sf "$DOTFILES/dunstrc" "$HOME/.config/dunst/dunstrc"
+
+ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
+
+mkdir -p "$HOME/.config/Code/User"
+ln -sf "$DOTFILES/vskeybindings.json" "$HOME/.config/Code/User/keybindings.json"
+
+mkdir -p "$HOME/.config/systemd/user"
+ln -sf "$DOTFILES/systemd/wallpaper.service" "$HOME/.config/systemd/user/wallpaper.service"
+ln -sf "$DOTFILES/systemd/wallpaper.timer" "$HOME/.config/systemd/user/wallpaper.timer"
+systemctl --user daemon-reload
+systemctl --user enable --now wallpaper.timer
+
+# --- system paths (need root) ---
+sudo ln -sf "$DOTFILES/custom" /usr/share/X11/xkb/symbols/custom
+sudo ln -sf "$DOTFILES/custom_ru" /usr/share/X11/xkb/symbols/custom_ru
+sudo mkdir -p /etc/keyd
+sudo ln -sf "$DOTFILES/keyd5layer.conf" /etc/keyd/keyd.conf

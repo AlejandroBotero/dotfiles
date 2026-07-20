@@ -1,28 +1,54 @@
 #!/bin/sh
+set -e
 
-sudo pacman -S --noconfirm zsh firefox kitty feh thunar tmux which nvim dunst picom brightnessctl keyd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra luarocks lua51 luajit imagemagick
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# --- core system / X / wm ---
+sudo pacman -S --needed --noconfirm \
+  xorg-server xorg-xinit xorg-xhost xorg-xinput \
+  i3-wm polybar dmenu dex xss-lock i3lock picom dunst \
+  networkmanager network-manager-applet \
+  bluez bluez-utils blueman \
+  mesa vulkan-intel vulkan-radeon \
+  ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
+  zsh firefox kitty feh thunar tmux which nvim brightnessctl keyd \
+  luarocks lua51 luajit imagemagick libnotify python-evdev
 
-git clone https://github.com/LazyVim/starter ~/.config/nvim
-rm -rf ~/.config/nvim/.git
+sudo systemctl enable --now NetworkManager bluetooth keyd
 
-git clone https://github.com/zsh-users/zsh-autosuggestions \
-  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# --- shell ---
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+sudo chsh -s "$(command -v zsh)" "$USER"
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+ZSH_CUSTOM_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
-git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git \
-  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+clone_if_missing() {
+  # $1 = repo url, $2 = target dir, $3.. = extra git clone flags
+  target="$2"
+  shift 2
+  if [ ! -d "$target" ]; then
+    git clone "$@" "$1" "$target"
+  fi
+}
 
-sudo pacman -S --noconfirm pipewire-pulse pavucontrol zoom
+clone_if_missing https://github.com/zsh-users/zsh-autosuggestions \
+  "$ZSH_CUSTOM_DIR/plugins/zsh-autosuggestions"
 
-sudo pacman -S --needed base-devel git
+clone_if_missing https://github.com/zsh-users/zsh-syntax-highlighting.git \
+  "$ZSH_CUSTOM_DIR/plugins/zsh-syntax-highlighting"
+
+clone_if_missing https://github.com/marlonrichert/zsh-autocomplete.git \
+  "$ZSH_CUSTOM_DIR/plugins/zsh-autocomplete" --depth 1
+
+# --- extra apps ---
+sudo pacman -S --needed --noconfirm pipewire-pulse pavucontrol zoom
+
+# --- AUR helper + AUR apps ---
+sudo pacman -S --needed --noconfirm base-devel git
 if ! command -v yay >/dev/null; then
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si --noconfirm
-  cd .. && rm -rf yay
+  git clone https://aur.archlinux.org/yay.git /tmp/yay
+  (cd /tmp/yay && makepkg -si --noconfirm)
+  rm -rf /tmp/yay
 fi
 
-yay -S --noconfirm brave-bin zoom
+yay -S --noconfirm brave-bin

@@ -1,5 +1,11 @@
-feh ~/wallpapers/wp5.jpg --bg-scale
+export XDG_CURRENT_DESKTOP=i3
+export XDG_SESSION_TYPE=x11
+systemctl --user import-environment DISPLAY XAUTHORITY XDG_SESSION_ID XDG_SEAT XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XDG_SESSION_ID XDG_SEAT XDG_CURRENT_DESKTOP XDG_SESSION_TYPE 2>/dev/null
+systemctl --user start graphical-session.target
+
+~/dotfiles/scripts/wallpaper.sh
 # setxkbmap -layout custom,custom_ru -option grp:win_space_toggle
-setxkbmap es
+setxkbmap -layout es,custom_ru -option grp:win_space_toggle
 xinput set-prop 11 "libinput Accel Speed" 0.5
 #xinput set-prop 11 "libinput Tapping Enabled" 1
