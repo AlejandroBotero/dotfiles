@@ -24,10 +24,11 @@ ZSH_CUSTOM_DIR=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
 clone_if_missing() {
   # $1 = repo url, $2 = target dir, $3.. = extra git clone flags
+  url="$1"
   target="$2"
   shift 2
   if [ ! -d "$target" ]; then
-    git clone "$@" "$1" "$target"
+    git clone "$@" "$url" "$target"
   fi
 }
 
