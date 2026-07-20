@@ -10,7 +10,7 @@ sudo pacman -S --needed --noconfirm \
   mesa vulkan-intel vulkan-radeon \
   ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra \
   zsh firefox kitty feh thunar tmux which nvim brightnessctl keyd \
-  luarocks lua51 luajit imagemagick libnotify python-evdev
+  luarocks lua51 luajit imagemagick libnotify python-evdev sound-theme-freedesktop
 
 sudo systemctl enable --now NetworkManager bluetooth keyd
 

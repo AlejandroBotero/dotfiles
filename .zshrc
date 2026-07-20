@@ -87,6 +87,34 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vi="nvim"
 bindkey '^I^I' autosuggest-accept
+
+# Audio cues
+snd() { ~/dotfiles/scripts/snd.sh "$1" 2>/dev/null }
+
+# Terminal startup
+snd login
+
+# Directory change
+function chpwd() { snd cd }
+
+# Command result: error always, success only after long commands (>=10s)
+_audio_cmd_start=0
+function _audio_preexec() { _audio_cmd_start=$SECONDS }
+function _audio_precmd() {
+    local exit_code=$?
+    local elapsed=$(( SECONDS - _audio_cmd_start ))
+    if [[ $_audio_cmd_start -gt 0 ]]; then
+        if [[ $exit_code -ne 0 ]]; then
+            snd error
+        elif [[ $elapsed -ge 10 ]]; then
+            snd complete
+        fi
+    fi
+    _audio_cmd_start=0
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _audio_preexec
+add-zsh-hook precmd _audio_precmd
 #zstyle ':completion:*' matcher-list \ 'm:{a-zA-Z}={A-Za-z}' \ 'r:|[._-]=* r:|=*' \ 'l:|=* r:|=*'
 RPROMPT='%D{%L:%M:%S %p}'
 export PATH="$HOME/.local/bin:$PATH"
