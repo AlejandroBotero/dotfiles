@@ -40,3 +40,4 @@ sudo ln -sf "$DOTFILES/custom" /usr/share/X11/xkb/symbols/custom
 sudo ln -sf "$DOTFILES/custom_ru" /usr/share/X11/xkb/symbols/custom_ru
 sudo mkdir -p /etc/keyd
 sudo ln -sf "$DOTFILES/keyd5layer.conf" /etc/keyd/keyd.conf
+sudo systemctl restart keyd
